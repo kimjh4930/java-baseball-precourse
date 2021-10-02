@@ -1,8 +1,6 @@
 package baseball.round;
 
-import baseball.rule.Digit;
-
 public interface Rule {
-    Digit getDigit ();
+    int getDigit ();
     boolean validateOf (String numberBall);
 }
