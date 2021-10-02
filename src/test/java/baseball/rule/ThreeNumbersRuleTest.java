@@ -20,7 +20,7 @@ class ThreeNumbersRuleTest {
     @DisplayName("digit이 3인지 확인한다.")
     @Test
     void digit (){
-        assertThat(rule.getDigit().valueOf()).isEqualTo(3);
+        assertThat(rule.getDigit()).isEqualTo(3);
     }
 
     @DisplayName("규칙에 따라 생성했는지 확인한다.")

@@ -9,8 +9,8 @@ public final class ThreeNumbersRule implements Rule {
     public final String ZERO = "0";
     public final Digit digit;
 
-    public Digit getDigit (){
-        return this.digit;
+    public int getDigit (){
+        return this.digit.valueOf();
     }
 
     public ThreeNumbersRule() {
