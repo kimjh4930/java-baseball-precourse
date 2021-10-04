@@ -45,7 +45,7 @@ class RefereeTest {
         NumbersBall hitters = new NumbersBall(stringAsList(hitter));
 
         //when
-        referee.pitchersBall(pitchers);
+        referee.getPitchersBall(pitchers);
 
         //then
         assertThat(referee.judge(hitters)).isEqualTo(gameSet);

@@ -12,7 +12,7 @@ public class Referee {
         board = new ResultBoard();
     }
 
-    public void pitchersBall (NumbersBall pitchersBall){
+    public void getPitchersBall (NumbersBall pitchersBall){
         this.pitchersBall = pitchersBall;
     }
 
