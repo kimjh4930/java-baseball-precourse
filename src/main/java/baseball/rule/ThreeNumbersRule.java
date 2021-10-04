@@ -2,8 +2,7 @@ package baseball.rule;
 
 import baseball.round.Rule;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public final class ThreeNumbersRule implements Rule {
     public final String ZERO = "0";
@@ -17,6 +16,7 @@ public final class ThreeNumbersRule implements Rule {
         this.digit = new Digit(3);
     }
 
+    @Override
     public boolean validateOf (final String numberBall){
         return checkLength(numberBall) &&
                 notContainZero(numberBall) &&
@@ -39,5 +39,41 @@ public final class ThreeNumbersRule implements Rule {
         }
 
         return numberSet.size() == digit.valueOf();
+    }
+
+    @Override
+    public int strike(List<Integer> pitchers, List<Integer> hitters) {
+        int strike = 0;
+
+        for(int i=0; i<getDigit(); i++){
+            strike += checkValueAndOrders(pitchers.get(i), hitters.get(i));
+        }
+
+        return strike;
+    }
+
+    private int checkValueAndOrders (int num1, int num2){
+        if(num1 == num2){
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int ball(List<Integer> pitchers, List<Integer> hitters) {
+        int contains = 0;
+
+        for(int i=0; i<getDigit(); ++i) {
+            contains += checkContains(pitchers, hitters.get(i));
+        }
+
+        return Math.abs(this.strike(pitchers, hitters) - contains);
+    }
+
+    private int checkContains (List<Integer> pitchers, int num2){
+        if(pitchers.contains(num2)){
+            return 1;
+        }
+        return 0;
     }
 }
