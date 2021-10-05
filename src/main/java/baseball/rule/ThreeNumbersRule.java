@@ -1,5 +1,6 @@
 package baseball.rule;
 
+import baseball.exception.InvalidInputException;
 import baseball.inning.Rule;
 
 import java.util.*;
@@ -17,17 +18,16 @@ public final class ThreeNumbersRule implements Rule {
     }
 
     @Override
-    public boolean validateOf (final String numberBall){
-        boolean validateResult =
-                checkLength(numberBall) &&
-                notContainZero(numberBall) &&
-                checkDuplicate(numberBall);
-
-        if(validateResult == false){
-            System.out.println("ERROR");
+    public boolean validateOf (final String numberBall) {
+        if(checkCondition(numberBall)){
+            return true;
         }
 
-        return validateResult;
+        throw new InvalidInputException("ERROR");
+    }
+
+    private boolean checkCondition (final String numberBall){
+        return checkLength(numberBall) && notContainZero(numberBall) && checkDuplicate(numberBall);
     }
 
     private boolean checkLength (final String numberBall){

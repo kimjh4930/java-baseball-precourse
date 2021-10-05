@@ -18,7 +18,6 @@ public class Referee {
 
     public boolean judge (NumbersBall hittersBall){
         this.hittersBall = hittersBall;
-
         int strike = strike();
         int ball = ball();
 
