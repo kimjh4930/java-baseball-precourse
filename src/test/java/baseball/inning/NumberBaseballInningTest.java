@@ -3,7 +3,7 @@ package baseball.inning;
 import baseball.inning.role.Computer;
 import baseball.inning.role.Player;
 import baseball.rule.ThreeNumbersRule;
-import baseball.ui.Inning;
+import baseball.game.Inning;
 import nextstep.test.NSTest;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.AfterEach;

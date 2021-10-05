@@ -1,4 +1,4 @@
-package baseball.ui;
+package baseball.game;
 
 import nextstep.test.NSTest;
 import org.junit.jupiter.api.AfterEach;

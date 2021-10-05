@@ -1,7 +1,7 @@
 package baseball.inning;
 
 import baseball.exception.InvalidInputException;
-import baseball.ui.Inning;
+import baseball.game.Inning;
 
 public class NumberBaseballInning implements Inning {
     private final Referee referee;

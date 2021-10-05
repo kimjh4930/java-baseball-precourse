@@ -6,7 +6,7 @@ import baseball.inning.Rule;
 import baseball.inning.role.Computer;
 import baseball.inning.role.Player;
 import baseball.rule.ThreeNumbersRule;
-import baseball.ui.NumberBaseballGame;
+import baseball.game.NumberBaseballGame;
 
 public class Application {
     public static void main(String[] args) {
