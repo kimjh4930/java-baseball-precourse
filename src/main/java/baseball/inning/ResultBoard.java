@@ -6,7 +6,11 @@ public final class ResultBoard {
             return "낫싱";
         }
 
-        if(strike !=0 && ball == 0){
+        return addCallSign(strike, ball);
+    }
+
+    private String addCallSign (int strike, int ball){
+        if(strike != 0 && ball == 0){
             return strike + "스트라이크";
         }
 
