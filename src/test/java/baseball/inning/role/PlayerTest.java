@@ -1,9 +1,8 @@
-package baseball.round.role;
+package baseball.inning.role;
 
-import baseball.round.Hitter;
-import baseball.round.NumbersBall;
-import baseball.round.Rule;
-import baseball.round.role.Player;
+import baseball.inning.Hitter;
+import baseball.inning.NumbersBall;
+import baseball.inning.Rule;
 import baseball.rule.ThreeNumbersRule;
 import nextstep.test.NSTest;
 import org.junit.jupiter.api.DisplayName;

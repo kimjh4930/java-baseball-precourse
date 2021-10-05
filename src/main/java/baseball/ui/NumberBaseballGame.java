@@ -4,7 +4,7 @@ import nextstep.utils.Console;
 
 public class NumberBaseballGame {
     private final int INSERT_COIN = 1;
-    private final int EXIT = 1;
+    private final int EXIT = 2;
 
     private final Inning inning;
 

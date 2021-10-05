@@ -42,10 +42,10 @@ class NumberBaseballGameTest extends NSTest {
 
     static class BaseballGameConfig {
         static NumberBaseballGame game (){
-            return new NumberBaseballGame (round());
+            return new NumberBaseballGame (mockInning());
         }
 
-        static Inning round (){
+        static Inning mockInning (){
             return () -> System.out.println("play!");
         }
     }

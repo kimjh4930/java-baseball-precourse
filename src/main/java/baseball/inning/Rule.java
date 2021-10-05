@@ -1,4 +1,4 @@
-package baseball.round;
+package baseball.inning;
 
 import java.util.List;
 

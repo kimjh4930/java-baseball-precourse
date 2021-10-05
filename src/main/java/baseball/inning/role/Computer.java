@@ -1,8 +1,8 @@
-package baseball.round.role;
+package baseball.inning.role;
 
-import baseball.round.NumbersBall;
-import baseball.round.Pitcher;
-import baseball.round.Rule;
+import baseball.inning.NumbersBall;
+import baseball.inning.Pitcher;
+import baseball.inning.Rule;
 import nextstep.utils.Randoms;
 
 import java.util.ArrayList;

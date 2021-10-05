@@ -1,4 +1,4 @@
-package baseball.round;
+package baseball.inning;
 
 public class Referee {
     private final Rule rule;
@@ -24,7 +24,7 @@ public class Referee {
 
         call(strike, ball);
 
-        return gameSet(strike);
+        return nextBall(strike);
     }
 
     private void call (int strike, int ball){
@@ -39,7 +39,7 @@ public class Referee {
         return rule.ball(pitchersBall.toList(), hittersBall.toList());
     }
 
-    private boolean gameSet (int strike){
-        return strike == rule.getDigit();
+    private boolean nextBall (int strike){
+        return strike != rule.getDigit();
     }
 }

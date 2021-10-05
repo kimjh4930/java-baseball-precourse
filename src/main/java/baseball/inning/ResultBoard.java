@@ -1,4 +1,4 @@
-package baseball.round;
+package baseball.inning;
 
 public final class ResultBoard {
     public String read (int strike, int ball){

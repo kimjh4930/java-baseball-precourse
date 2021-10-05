@@ -1,4 +1,4 @@
-package baseball.round;
+package baseball.inning;
 
 import baseball.rule.ThreeNumbersRule;
 import org.junit.jupiter.api.AfterEach;

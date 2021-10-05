@@ -1,4 +1,4 @@
-package baseball.round;
+package baseball.inning;
 
 public interface Hitter {
     NumbersBall hitting();

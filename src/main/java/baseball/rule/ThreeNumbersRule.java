@@ -1,6 +1,6 @@
 package baseball.rule;
 
-import baseball.round.Rule;
+import baseball.inning.Rule;
 
 import java.util.*;
 
@@ -18,9 +18,16 @@ public final class ThreeNumbersRule implements Rule {
 
     @Override
     public boolean validateOf (final String numberBall){
-        return checkLength(numberBall) &&
+        boolean validateResult =
+                checkLength(numberBall) &&
                 notContainZero(numberBall) &&
                 checkDuplicate(numberBall);
+
+        if(validateResult == false){
+            System.out.println("ERROR");
+        }
+
+        return validateResult;
     }
 
     private boolean checkLength (final String numberBall){
