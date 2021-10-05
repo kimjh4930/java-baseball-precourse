@@ -1,14 +1,25 @@
 package baseball;
 
-import baseball.config.NumberBaseballAppConfig;
+import baseball.inning.NumberBaseballInning;
+import baseball.inning.Referee;
+import baseball.inning.Rule;
+import baseball.inning.role.Computer;
+import baseball.inning.role.Player;
+import baseball.rule.ThreeNumbersRule;
 import baseball.ui.NumberBaseballGame;
 
 public class Application {
     public static void main(String[] args) {
-        NumberBaseballAppConfig config = new NumberBaseballAppConfig();
+        Rule rule = new ThreeNumbersRule();
+        NumberBaseballGame game = new NumberBaseballGame(
+            new NumberBaseballInning(
+                new Referee(rule),
+                new Computer(rule),
+                new Player(rule)
+            )
+        );
 
-        NumberBaseballGame baseballGame = config.baseballGame();
-        baseballGame.run();
+        game.run();
 
         System.out.println("게임 종료");
     }
