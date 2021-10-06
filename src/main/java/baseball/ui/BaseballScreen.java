@@ -23,7 +23,6 @@ public class BaseballScreen {
 		while (choice == Coin.INSERT) {
 			inning();
 			choice = insertCoin();
-			System.out.println(choice);
 		}
 	}
 
@@ -31,11 +30,11 @@ public class BaseballScreen {
 		pitching();
 		hitting();
 
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝.");
+		print("3개의 숫자를 모두 맞히셨습니다! 게임 끝.");
 	}
 
 	private Coin insertCoin() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		int choice = select();
 
 		while (outOfBound(choice)) {
@@ -53,7 +52,8 @@ public class BaseballScreen {
 		Coin coin = Coin.get(choice);
 
 		if (coin == null) {
-			System.out.println("ERROR");
+			printWithoutNewLine("ERROR");
+			System.out.println();
 		}
 
 		return coin == null;
@@ -67,7 +67,7 @@ public class BaseballScreen {
 		boolean gameSet = false;
 
 		while (!gameSet) {
-			System.out.print("숫자를 입력해주세요 : ");
+			printWithoutNewLine("숫자를 입력해주세요 : ");
 			NumbersBall hittersBall = getHitterBall();
 			ResultBoard resultBoard = inning.judge(hittersBall);
 			call(resultBoard);
@@ -80,7 +80,7 @@ public class BaseballScreen {
 		try {
 			ball = inning.hitting(userInput());
 		} catch (InvalidInputException e) {
-			System.out.println(e.getMessage());
+			print(e.getMessage());
 		}
 		return ball;
 	}
@@ -89,7 +89,7 @@ public class BaseballScreen {
 		if (board == null) {
 			return;
 		}
-		System.out.println(board.read());
+		print(board.read());
 	}
 
 	private boolean gameSet(ResultBoard board) {
@@ -101,6 +101,14 @@ public class BaseballScreen {
 
 	private String userInput() {
 		return Console.readLine();
+	}
+
+	private void print (String content){
+		System.out.println(content);
+	}
+
+	private void printWithoutNewLine (String content){
+		System.out.print(content);
 	}
 
 }
