@@ -11,9 +11,7 @@ class ResultBoardTest {
 	@DisplayName("3스트라이크")
 	@Test
 	void threeStrike() {
-		//given
 		board = new ResultBoard(3, 0, true);
-
 		assertThat(board.read()).isEqualTo("3스트라이크");
 		assertThat(board.gameSet()).isTrue();
 	}
