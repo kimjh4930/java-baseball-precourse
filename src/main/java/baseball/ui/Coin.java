@@ -9,16 +9,16 @@ public enum Coin {
 
 	private final int value;
 
-	Coin (int value){
+	Coin(int value) {
 		this.value = value;
 	}
 
-	protected static Coin get(int value){
-		if(value == INSERT_VALUE){
+	protected static Coin get(int value) {
+		if (value == INSERT_VALUE) {
 			return INSERT;
 		}
 
-		if(value == EXIT_VALUE){
+		if (value == EXIT_VALUE) {
 			return EXIT;
 		}
 		return null;
