@@ -13,50 +13,50 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetCollectionTest {
-    private Set<Integer> numbers;
+	private Set<Integer> numbers;
 
-    @BeforeEach
-    void setUp (){
-        numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-    }
+	@BeforeEach
+	void setUp() {
+		numbers = new HashSet<>();
+		numbers.add(1);
+		numbers.add(1);
+		numbers.add(2);
+		numbers.add(3);
+	}
 
-    @DisplayName("Numbers의 크기를 확인한다.")
-    @Test
-    void size (){
-        //given
-        int expectedSize = 3;
+	@DisplayName("Numbers의 크기를 확인한다.")
+	@Test
+	void size() {
+		//given
+		int expectedSize = 3;
 
-        //when
+		//when
 
-        //then
-        assertThat(numbers.size()).isEqualTo(expectedSize);
-    }
+		//then
+		assertThat(numbers.size()).isEqualTo(expectedSize);
+	}
 
-    @DisplayName("Set의 원소를 확인한다.")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void contains (int value){
-        //given
+	@DisplayName("Set의 원소를 확인한다.")
+	@ParameterizedTest
+	@ValueSource(ints = {1, 2, 3})
+	void contains(int value) {
+		//given
 
-        //when
+		//when
 
-        //then
-        assertThat(numbers.contains(value)).isTrue();
-    }
+		//then
+		assertThat(numbers.contains(value)).isTrue();
+	}
 
-    @DisplayName("원소가 포함되어있으면 True, 그렇지 않으면 False를 반환한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void containsOrNot (int input, boolean expected){
-        //given
+	@DisplayName("원소가 포함되어있으면 True, 그렇지 않으면 False를 반환한다.")
+	@ParameterizedTest
+	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+	void containsOrNot(int input, boolean expected) {
+		//given
 
-        //when
+		//when
 
-        //then
-        assertThat(numbers.contains(input)).isEqualTo(expected);
-    }
+		//then
+		assertThat(numbers.contains(input)).isEqualTo(expected);
+	}
 }

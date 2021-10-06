@@ -4,9 +4,9 @@ import baseball.inning.NumbersBall;
 import baseball.inning.ResultBoard;
 
 public interface Inning {
-    void pitching ();
+	void pitching();
 
-    NumbersBall hitting(String userInput);
+	NumbersBall hitting(String userInput);
 
-    ResultBoard judge (NumbersBall hittersBall);
+	ResultBoard judge(NumbersBall hittersBall);
 }

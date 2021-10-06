@@ -10,16 +10,15 @@ import baseball.ui.BaseballScreen;
 import baseball.ui.Inning;
 
 public class Application {
-    public static void main(String[] args) {
-        Rule rule = new ThreeNumbersRule();
-        Inning inning = new NumberBaseballInning(
-            new Referee(rule),
-            new Computer(rule),
-            new Player(rule)
-        );
+	public static void main(String[] args) {
+		Rule rule = new ThreeNumbersRule();
+		Inning inning = new NumberBaseballInning(
+			new Referee(rule),
+			new Computer(rule),
+			new Player(rule)
+		);
 
-        BaseballScreen baseball = new BaseballScreen(inning);
-        baseball.play();
-    }
-
+		BaseballScreen baseball = new BaseballScreen(inning);
+		baseball.play();
+	}
 }

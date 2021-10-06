@@ -9,38 +9,28 @@ import nextstep.utils.Console;
 import java.util.*;
 
 public final class Player implements Hitter {
-    private final Rule rule;
+	private final Rule rule;
 
-    public Player(Rule rule) {
-        this.rule = rule;
-    }
+	public Player(Rule rule) {
+		this.rule = rule;
+	}
 
-    public NumbersBall hitting (String ball){
-        if(!rule.validateOf(ball)){
-            throw new InvalidInputException(ball);
-        }
-        List<Integer> numbers = convertToList(ball);
+	public NumbersBall hitting(String ball) {
+		if (!rule.validateOf(ball)) {
+			throw new InvalidInputException(ball);
+		}
+		List<Integer> numbers = convertToList(ball);
 
-        return new NumbersBall(numbers);
-    }
+		return new NumbersBall(numbers);
+	}
 
-//    private List<Integer> typedNumber (){
-//        String typed;
-//
-//        do {
-//            typed = Console.readLine();
-//        } while(!rule.validateOf(typed));
-//
-//        return convertToList(typed);
-//    }
+	private List<Integer> convertToList(String numbers) {
+		List<Integer> numberList = new ArrayList<>();
 
-    private List<Integer> convertToList (String numbers){
-        List<Integer> numberList = new ArrayList<>();
+		for (char number : numbers.toCharArray()) {
+			numberList.add(number - '0');
+		}
 
-        for(char number : numbers.toCharArray()){
-            numberList.add(number - '0');
-        }
-
-        return Collections.unmodifiableList(numberList);
-    }
+		return Collections.unmodifiableList(numberList);
+	}
 }

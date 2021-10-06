@@ -11,26 +11,26 @@ import java.util.List;
 import java.util.Set;
 
 public final class Computer implements Pitcher {
-    private final int MIN = 1;
-    private final int MAX = 9;
+	private final int MIN = 1;
+	private final int MAX = 9;
 
-    private final Rule rule;
+	private final Rule rule;
 
-    public Computer(Rule rule) {
-        this.rule = rule;
-    }
+	public Computer(Rule rule) {
+		this.rule = rule;
+	}
 
-    public NumbersBall pitching (){
-        return new NumbersBall(randomNumbers());
-    }
+	public NumbersBall pitching() {
+		return new NumbersBall(randomNumbers());
+	}
 
-    private List<Integer> randomNumbers (){
-        Set<Integer> pickedNumbers = new LinkedHashSet<>();
+	private List<Integer> randomNumbers() {
+		Set<Integer> pickedNumbers = new LinkedHashSet<>();
 
-        while(pickedNumbers.size() != rule.getDigit()){
-            pickedNumbers.add(Randoms.pickNumberInRange(MIN, MAX));
-        }
+		while (pickedNumbers.size() != rule.getDigit()) {
+			pickedNumbers.add(Randoms.pickNumberInRange(MIN, MAX));
+		}
 
-        return new ArrayList<>(pickedNumbers);
-    }
+		return new ArrayList<>(pickedNumbers);
+	}
 }
