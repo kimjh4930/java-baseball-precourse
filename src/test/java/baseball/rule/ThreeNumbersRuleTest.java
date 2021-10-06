@@ -1,16 +1,19 @@
 package baseball.rule;
 
+import baseball.exception.InvalidInputException;
 import baseball.inning.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class ThreeNumbersRuleTest {
     private Rule rule;
@@ -29,18 +32,19 @@ class ThreeNumbersRuleTest {
     @DisplayName("규칙에 따라 생성했는지 확인한다.")
     @ParameterizedTest
     @CsvSource(
-        value = {
-            "123:true",
-            "012:false",
-            "113:false",
-            "980:false",
-            "000:false",
-            "111:false"
-        },
+        value = {"123:true"},
         delimiter = ':'
     )
     void checkNumberBall (String ball, boolean result){
         assertThat(rule.validateOf(ball)).isEqualTo(result);
+    }
+
+    @DisplayName("규칙에 맞지 않은 경우, Exception이 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"012", "113", "980", "000", "111"})
+    void wrongNumberThrowException (String ball){
+        assertThatExceptionOfType(InvalidInputException.class)
+                .isThrownBy(() -> rule.validateOf(ball));
     }
 
     @DisplayName("규칙에 따라 strike 를 판정한다.")

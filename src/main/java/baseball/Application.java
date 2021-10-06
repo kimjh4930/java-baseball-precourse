@@ -6,22 +6,20 @@ import baseball.inning.Rule;
 import baseball.inning.role.Computer;
 import baseball.inning.role.Player;
 import baseball.rule.ThreeNumbersRule;
-import baseball.game.NumberBaseballGame;
+import baseball.ui.BaseballScreen;
+import baseball.ui.Inning;
 
 public class Application {
     public static void main(String[] args) {
         Rule rule = new ThreeNumbersRule();
-        NumberBaseballGame game = new NumberBaseballGame(
-            new NumberBaseballInning(
-                new Referee(rule),
-                new Computer(rule),
-                new Player(rule)
-            )
+        Inning inning = new NumberBaseballInning(
+            new Referee(rule),
+            new Computer(rule),
+            new Player(rule)
         );
 
-        game.run();
-
-        System.out.println("게임 종료");
+        BaseballScreen baseball = new BaseballScreen(inning);
+        baseball.play();
     }
 
 }

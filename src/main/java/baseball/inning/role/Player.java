@@ -1,5 +1,6 @@
 package baseball.inning.role;
 
+import baseball.exception.InvalidInputException;
 import baseball.inning.Hitter;
 import baseball.inning.NumbersBall;
 import baseball.inning.Rule;
@@ -14,19 +15,24 @@ public final class Player implements Hitter {
         this.rule = rule;
     }
 
-    public NumbersBall hitting (){
-        return new NumbersBall(typedNumber());
+    public NumbersBall hitting (String ball){
+        if(!rule.validateOf(ball)){
+            throw new InvalidInputException(ball);
+        }
+        List<Integer> numbers = convertToList(ball);
+
+        return new NumbersBall(numbers);
     }
 
-    private List<Integer> typedNumber (){
-        String typed;
-
-        do {
-            typed = Console.readLine();
-        } while(!rule.validateOf(typed));
-
-        return convertToList(typed);
-    }
+//    private List<Integer> typedNumber (){
+//        String typed;
+//
+//        do {
+//            typed = Console.readLine();
+//        } while(!rule.validateOf(typed));
+//
+//        return convertToList(typed);
+//    }
 
     private List<Integer> convertToList (String numbers){
         List<Integer> numberList = new ArrayList<>();

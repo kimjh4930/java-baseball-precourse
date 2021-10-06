@@ -3,7 +3,7 @@ package baseball.inning;
 import baseball.inning.role.Computer;
 import baseball.inning.role.Player;
 import baseball.rule.ThreeNumbersRule;
-import baseball.game.Inning;
+import baseball.ui.Inning;
 import nextstep.test.NSTest;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.AfterEach;
@@ -53,7 +53,10 @@ class NumberBaseballInningTest extends NSTest {
 
     @Override
     public void runMain() {
-        inning.play();
+        inning.pitching();
+
+//        inning.hitting();
+//        inning.judge();
     }
 
     @AfterEach

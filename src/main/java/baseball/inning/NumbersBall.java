@@ -13,4 +13,16 @@ public final class NumbersBall {
         return new ArrayList<>(numbers);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NumbersBall that = (NumbersBall) o;
+        return numbers.equals(that.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
+    }
 }
