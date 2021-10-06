@@ -6,9 +6,6 @@ import baseball.inning.ResultBoard;
 import nextstep.utils.Console;
 
 public class BaseballScreen {
-	private final int INSERT_COIN = 1;
-	private final int EXIT = 2;
-
 	private final Inning inning;
 
 	public BaseballScreen(Inning inning) {
@@ -17,13 +14,15 @@ public class BaseballScreen {
 
 	/**
 	 * 숫자야구게임 시작
+	 *
+	 * 투수가 숫자공을 제시하고, 타자가 투수의 숫자공을 맞출 때 까지를 "이닝"이라 한다.
 	 */
 	public void play() {
-		int choice = INSERT_COIN;
+		Coin choice = Coin.INSERT;
 
-		while (choice == INSERT_COIN) {
+		while (choice == Coin.INSERT) {
 			inning();
-			choice = choiceNextGameOrExit();
+			choice = insertCoin();
 			System.out.println(choice);
 		}
 	}
@@ -35,7 +34,7 @@ public class BaseballScreen {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝.");
 	}
 
-	private int choiceNextGameOrExit() {
+	private Coin insertCoin() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		int choice = select();
 
@@ -43,7 +42,7 @@ public class BaseballScreen {
 			choice = select();
 		}
 
-		return choice;
+		return Coin.get(choice);
 	}
 
 	private int select() {
@@ -51,13 +50,13 @@ public class BaseballScreen {
 	}
 
 	private boolean outOfBound(int choice) {
-		boolean invalid = !(choice == INSERT_COIN || choice == EXIT);
+		Coin coin = Coin.get(choice);
 
-		if (invalid) {
+		if (coin == null) {
 			System.out.println("ERROR");
 		}
 
-		return invalid;
+		return coin == null;
 	}
 
 	private void pitching() {

@@ -13,7 +13,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.MockedStatic;
 
 import static org.assertj.core.api.Assertions.*;
@@ -35,7 +38,20 @@ class NumberBaseballInningTest extends NSTest {
 	@Override
 	protected void setUp() {
 		super.setUp();
+
 		inning = RoundTestConfig.inning();
+	}
+
+	@DisplayName("에러발생")
+	@Test
+	void 에러발생() {
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(1, 7, 9);
+
+			assertThatExceptionOfType(InvalidInputException.class)
+				.isThrownBy(() -> inning.hitting("12"));
+		}
 	}
 
 	@DisplayName("라운드 정상종료")
@@ -50,36 +66,14 @@ class NumberBaseballInningTest extends NSTest {
 			expectedResults.add(new ResultBoard(1, 1, false));
 			expectedResults.add(new ResultBoard(3, 0, true));
 
-			assertThat(inning.judge(stringToNumbersBall("597"))).isIn(expectedResults);
-			assertThat(inning.judge(stringToNumbersBall("589"))).isIn(expectedResults);
+			assertThat(inning.judge(inning.hitting("597"))).isIn(expectedResults);
+			assertThat(inning.judge(inning.hitting("589"))).isIn(expectedResults);
 		}
-	}
-
-	@DisplayName("에러발생")
-	@Test
-	void 에러발생() {
-		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(5, 8, 9);
-
-			assertThatExceptionOfType(InvalidInputException.class)
-				.isThrownBy(() -> run("12"));
-		}
-	}
-
-	private NumbersBall stringToNumbersBall(String input) {
-		List<Integer> numbers = new ArrayList<>();
-		for (char number : input.toCharArray()) {
-			numbers.add(number - '0');
-		}
-
-		return new NumbersBall(numbers);
 	}
 
 	@Override
 	public void runMain() {
 		inning.pitching();
-		inning.hitting(Console.readLine());
 	}
 
 	@AfterEach
