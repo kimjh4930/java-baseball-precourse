@@ -67,9 +67,9 @@ class NumberBaseballInningTest extends NSTest {
 		}
 	}
 
-	private NumbersBall stringToNumbersBall (String input){
+	private NumbersBall stringToNumbersBall(String input) {
 		List<Integer> numbers = new ArrayList<>();
-		for(char number : input.toCharArray()){
+		for (char number : input.toCharArray()) {
 			numbers.add(number - '0');
 		}
 

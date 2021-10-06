@@ -60,18 +60,6 @@ public class StringTest {
 
 		//then
 		assertThat(select).isEqualTo(expected);
-
-		//        assertThatThrownBy(() -> {
-		//            character.charAt(index);
-		//        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-		//                .hasMessage("String index out of range: " + index);
-		//        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-		//                .isThrownBy(() -> character.charAt(5))
-		//                .withMessage("String index out of range: ");
-		//        assertThatThrownBy(() -> {
-		//            character.charAt(5);
-		//        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-		//                .hasMessageContaining("Index: 2, Size: 2");
 	}
 
 	@DisplayName("String index 를 벗어나면 StringIndexOutOfBoundsException이 발생한다.")
