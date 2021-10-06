@@ -9,14 +9,22 @@ public final class ThreeNumbersRule implements Rule {
 	public final String ZERO = "0";
 	public final Digit digit;
 
-	public int getDigit() {
-		return this.digit.valueOf();
-	}
-
+	/**
+	 * 숫자야구게임의 규칙을 설정한다.
+	 */
 	public ThreeNumbersRule() {
 		this.digit = new Digit(3);
 	}
 
+	public int getDigit() {
+		return this.digit.valueOf();
+	}
+
+	/**
+	 * @param  numberBall 숫자 문자열이 규칙에 맞게 작성되었는지 확인
+	 * @return 규칙에 맞으면 true를 반환
+	 * @throws InvalidInputException 규칙에 맞지 않으면, 발생한다.
+	 */
 	@Override
 	public boolean validateOf(final String numberBall) {
 		if (checkCondition(numberBall)) {
@@ -48,6 +56,14 @@ public final class ThreeNumbersRule implements Rule {
 		return numberSet.size() == digit.valueOf();
 	}
 
+	/**
+	 * 숫자공의 위치와 값이 동일한 경우를 strike 라고 한다.
+	 *
+	 * @param pitchers 투수의 숫자공
+	 * @param hitters  타자의 숫자공
+	 * @return 스트라이크의 갯수
+	 */
+
 	@Override
 	public int strike(List<Integer> pitchers, List<Integer> hitters) {
 		int strike = 0;
@@ -65,6 +81,15 @@ public final class ThreeNumbersRule implements Rule {
 		}
 		return 0;
 	}
+
+	/**
+	 * 타자의 숫자공의 숫자가 투수의 숫자공에 몇개 존재하는지 확인 후, strike 수를 뺀다.
+	 * ball의 개수 = contains 수 - strike의 개수
+	 *
+	 * @param pitchers 투수의 숫자공
+	 * @param hitters  타자의 숫자공
+	 * @return 볼의 갯수
+	 */
 
 	@Override
 	public int ball(List<Integer> pitchers, List<Integer> hitters) {

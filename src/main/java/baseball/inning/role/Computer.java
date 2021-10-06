@@ -24,6 +24,14 @@ public final class Computer implements Pitcher {
 		return new NumbersBall(randomNumbers());
 	}
 
+	/**{@link}
+	 * <p>
+	 * {@link Rule#getDigit()}
+	 * 규칙에서 정한 Digit 값과 동일한 갯수만큼 임의의 숫자를 뽑는다.
+	 * </p>
+	 * @return {@link ArrayList}
+	 */
+
 	private List<Integer> randomNumbers() {
 		Set<Integer> pickedNumbers = new LinkedHashSet<>();
 

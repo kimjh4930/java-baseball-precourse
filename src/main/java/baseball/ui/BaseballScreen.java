@@ -15,6 +15,9 @@ public class BaseballScreen {
 		this.inning = inning;
 	}
 
+	/**
+	 * 숫자야구게임 시작
+	 */
 	public void play() {
 		int choice = INSERT_COIN;
 
